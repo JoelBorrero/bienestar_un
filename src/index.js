@@ -1,13 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from 'context/AuthProvider';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0200AB',
+    },
+    primaryDark: {
+      main: '#01007C',
+    },
+    secondary: {
+      main: '#00A1AB',
+    },
+    white: {
+      main: '#FFF'
+    }
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
