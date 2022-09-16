@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
+import { useContext } from 'react';
+import AuthContext from 'context/AuthProvider';
 import axios from 'context/axios'
 import MainPanel from 'components/MainPanel/MainPanel';
 
 const Users = () => {
+    const { auth } = useContext(AuthContext);
     const [data, setData] = useState([]);
     const card1 = {
         title: 'Administrativos',
@@ -21,10 +24,9 @@ const Users = () => {
     }
 
     const onLoad = async e => {
-        const response = (await axios.get('users')).data;
-        console.log(response);
-        // setData(response.data.data);
-        // console.log(data);
+        const config = { 'headers': { 'Authorization': 'Bearer ' + auth.accessToken } }
+        const response = (await axios.get('users/all', config)).data;
+        setData(response.data);
     }
 
     useEffect(() => {

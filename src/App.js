@@ -7,7 +7,7 @@ import Activities from 'views/Activities';
 import AuthContext from 'context/AuthProvider';
 import Dashboard from 'views/Home';
 import Groups from 'views/Groups';
-import Login from 'views/Login/Login';
+import Login from 'views/Auth/Login';
 import Reports from 'views/Reports';
 import Settings from 'views/Settings';
 import Sidebar from 'components/sidebar/Sidebar';

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import './MainPanel.css'
-import Card from '../Card/Card'
 import StatisticCard from 'components/Card/StatisticCard'
 import DataTable from 'components/Table/DataTable'
 
@@ -14,10 +13,10 @@ const MainPanel = (props) => {
             <div className='row'>
                 <div className='col twice'>
                     <StatisticCard stat={props.card1} />
-                    <Card title={props.card2.title} />
+                    <StatisticCard stat={props.card2} />
                 </div>
-                <DataTable data={props.data} />
-                <Card title='table' />
+                {props.rightContent ? props.rightContent :
+                    <DataTable data={props.data} />}
             </div>
         </section>
     )

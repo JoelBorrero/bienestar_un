@@ -6,7 +6,7 @@
 
 .MainPanel>.row {
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 30% 70%;
 }
 
 .MainPanel .col.twice {

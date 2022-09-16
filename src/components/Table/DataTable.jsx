@@ -2,20 +2,19 @@ import { DataGrid } from '@mui/x-data-grid';
 
 import './DataTable.css'
 
-function createData(id, name, group, activities, role, career) {
-    return { id, name, group, activities, role, career };
+function createData(id, name, username, activities, role) {
+    return { id, name, username, activities, role };
 }
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'id', headerName: 'Código', width: 100 },
     { field: 'name', headerName: 'Nombre', width: 130 },
-    { field: 'group', headerName: 'Grupo', type: 'number', width: 90 },
+    { field: 'username', headerName: 'Username', type: 'number', width: 90 },
     { field: 'activities', headerName: 'Actividades', type: 'number', width: 90 },
     { field: 'role', headerName: 'Rol', description: 'This column has a value getter and is not sortable.', width: 160 },
-    { field: 'career', headerName: 'Carrera', width: 130 },
 ];
 
-const rows = [
+let rows = [
     createData(1, 'Jon Snow', 35, 10, 'Promotor', 'Ing. Civil'),
     createData(2, 'Cersei Lannister', 42, 10, 'Estudiante', 'Admon'),
     createData(3, 'Jaime Lannister', 45, 10, 'Promotor', 'Derecho'),
@@ -30,6 +29,8 @@ const rows = [
 ];
 
 export default function DataTable(props) {
+    if (props.data)
+        rows = props.data.map((user) => createData(user.ciu, user.name, user.username, user.id, user.role));
     return (
         <article className='Card' >
             <DataGrid
